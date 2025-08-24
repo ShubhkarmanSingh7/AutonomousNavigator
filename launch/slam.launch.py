@@ -7,14 +7,14 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # Get package paths
-    pkg_elderly_service_bot = get_package_share_directory('elderly_service_bot')
+    pkg_AutonomousNavigator = get_package_share_directory('AutonomousNavigator')
     pkg_nav2_bringup = get_package_share_directory('nav2_bringup')
-    pkg_frontier_exploration = get_package_share_directory('elderly_service_bot')  
+    pkg_frontier_exploration = get_package_share_directory('AutonomousNavigator')  
 
     # Paths
     nav2_params_file = os.path.join(pkg_elderly_service_bot, 'config', 'nav2_params.yaml')
 
-    # Start simulation (spawn bot)
+    # Start simulation
     start_simulation_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_elderly_service_bot, 'launch', 'start_simulation.launch.py')
@@ -34,7 +34,7 @@ def generate_launch_description():
         }.items()
     )
 
-    # Start exploration node 
+    # exploration
     explorer_node = Node(
         package='elderly_service_bot',
         executable='explorer',
