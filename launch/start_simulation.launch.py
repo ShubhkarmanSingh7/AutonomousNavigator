@@ -9,13 +9,13 @@ import xacro
 
 def generate_launch_description():
     # Get package paths
-    pkg_elderly_service_bot = get_package_share_directory('elderly_service_bot')
+    pkg_Autonomousnavigator = get_package_share_directory('AutonomousNavigator')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_turtlebot3_description = get_package_share_directory('turtlebot3_description')
     pkg_turtlebot3_gazebo = get_package_share_directory('turtlebot3_gazebo')
 
     # Set Gazebo model path
-    models_path = os.path.join(pkg_elderly_service_bot, 'models')
+    models_path = os.path.join(pkg_AutonomousNavigator, 'models')
     if 'GAZEBO_MODEL_PATH' in os.environ:
         models_path += os.pathsep + os.environ['GAZEBO_MODEL_PATH']
 
@@ -29,7 +29,7 @@ def generate_launch_description():
     y_pose = LaunchConfiguration('y_pose', default='4.8')
     world_file = LaunchConfiguration(
         'world',
-        default=os.path.join(pkg_elderly_service_bot, 'worlds', 'two_bhk.world')
+        default=os.path.join(pkg_AutonomousNavigator, 'worlds', 'small_house.world')
     )
 
     # Include Gazebo launch file
@@ -39,8 +39,6 @@ def generate_launch_description():
         ),
         launch_arguments={'world': world_file, 'verbose': 'false'}.items()
     )
-
-    # Process URDF using xacro so that ${namespace} and args expand correctly
     urdf_xacro = os.path.join(pkg_turtlebot3_description, 'urdf', 'turtlebot3_burger.urdf')
     robot_desc = xacro.process_file(urdf_xacro).toxml()
 
@@ -56,8 +54,6 @@ def generate_launch_description():
         }],
         output='screen'
     )
-
-    # Path to the SDF file for Gazebo spawning
     sdf_file = os.path.join(pkg_turtlebot3_gazebo, 'models', 'turtlebot3_burger', 'model.sdf')
 
     # Spawn Entity node
