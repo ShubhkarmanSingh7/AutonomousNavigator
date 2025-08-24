@@ -12,12 +12,12 @@ def generate_launch_description():
     pkg_frontier_exploration = get_package_share_directory('AutonomousNavigator')  
 
     # Paths
-    nav2_params_file = os.path.join(pkg_elderly_service_bot, 'config', 'nav2_params.yaml')
+    nav2_params_file = os.path.join(pkg_AutonomousNavigator, 'config', 'nav2_params.yaml')
 
     # Start simulation
     start_simulation_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_elderly_service_bot, 'launch', 'start_simulation.launch.py')
+            os.path.join(pkg_AutonomousNavigator, 'launch', 'start_simulation.launch.py')
         )
     )
 
@@ -36,7 +36,7 @@ def generate_launch_description():
 
     # exploration
     explorer_node = Node(
-        package='elderly_service_bot',
+        package='AutonomousNavigator',
         executable='explorer',
         name='explorer',
         output='screen'
