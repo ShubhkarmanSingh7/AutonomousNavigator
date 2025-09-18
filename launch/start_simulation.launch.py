@@ -8,7 +8,6 @@ from launch_ros.actions import Node
 import xacro
 
 def generate_launch_description():
-    # Get package paths
     pkg_autonomousnavigator = get_package_share_directory('autonomousnavigator')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     pkg_turtlebot3_description = get_package_share_directory('turtlebot3_description')
