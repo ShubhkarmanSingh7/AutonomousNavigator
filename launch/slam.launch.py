@@ -7,17 +7,17 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # Get package paths
-    pkg_AutonomousNavigator = get_package_share_directory('AutonomousNavigator')
+    pkg_autonomousnavigator = get_package_share_directory('autonomousnavigator')
     pkg_nav2_bringup = get_package_share_directory('nav2_bringup')
-    pkg_frontier_exploration = get_package_share_directory('AutonomousNavigator')  
+    pkg_frontier_exploration = get_package_share_directory('autonomousnavigator')  
 
     # Paths
-    nav2_params_file = os.path.join(pkg_AutonomousNavigator, 'config', 'nav2_params.yaml')
+    nav2_params_file = os.path.join(pkg_autonomousnavigator, 'config', 'nav2_params.yaml')
 
     # Start simulation
     start_simulation_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(pkg_AutonomousNavigator, 'launch', 'start_simulation.launch.py')
+            os.path.join(pkg_autonomousnavigator, 'launch', 'start_simulation.launch.py')
         )
     )
 
@@ -36,7 +36,7 @@ def generate_launch_description():
 
     # exploration
     explorer_node = Node(
-        package='AutonomousNavigator',
+        package='autonomousnavigator',
         executable='explorer',
         name='explorer',
         output='screen'
