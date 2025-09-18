@@ -10,7 +10,7 @@ def generate_launch_description():
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
     # 2. Get the path to your custom package
-    pkg_elderly_service_bot = get_package_share_directory('AutonomousNavigator')
+    pkg_elderly_service_bot = get_package_share_directory('autonomousnavigator')
 
     # 3. Define the path to your world file
     world_file_path = os.path.join(pkg_elderly_service_bot, 'worlds', 'small_house.world')
