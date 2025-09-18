@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import find_packages, setup
 
-package_name = 'AutonomousNavigator'
+package_name = 'autonomousnavigator'
 
 setup(
     name=package_name,
@@ -23,13 +23,13 @@ setup(
     zip_safe=True,
     maintainer='shubh',
     maintainer_email='shubh@todo.todo',
-    description='A service robot for the elderly.',
+    description='Autonomous Navigator.',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             # Add explorer node here
-            'explorer = elderly_service_bot.explorer:main',
+            'explorer = autonomousnavigator.explorer:main',
         ],
     },
 )
